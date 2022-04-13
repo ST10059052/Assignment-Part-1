@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build
-        run: mvn --batch-mode -Assignment Part 1
+        run: mvn --batch-mode -README.md
 
       - name: Test
         run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
