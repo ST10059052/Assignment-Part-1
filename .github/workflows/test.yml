@@ -1,50 +1,41 @@
 
 name: The TestJava.yml file
-on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-  pull_request:
-    paths-ignore:
-      - '**.md'
+on: [push, pull_request]
 
 jobs:
-
-  build:
-    name: Build
-
+  test:
     strategy:
       matrix:
-        runs-on: [ubuntu-latest, macos-latest, windows-latest]
-      fail-fast: false
-
-    runs-on: ${{ matrix.runs-on }}
-
+        go-version: [1.17.x, 1.18.x]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Set Node.js 12.x
-      uses: actions/setup-node@v1
+    - uses: actions/setup-go@v3
       with:
-        node-version: 12.x
+        go-version: ${{ matrix.go-version }}
+    - uses: actions/checkout@v3
+    - run: go test ./...
 
-    - name: npm install
-      run: npm install
-
-
-    - name: Compile
-      run: npm run build
-
-    - name: npm test
-      run: npm test
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-
-    - name: Lint
-      run: npm run lint
-
-    - name: Format
-      run: npm run format-che
+  test-cache:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.18.x
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v2
+      with:
+        # In order:
+        # * Module download cache
+        # * Build cache (Linux)
+        # * Build cache (Mac)
+        # * Build cache (Windows)
+        path: |
+          ~/go/pkg/mod
+          ~/.cache/go-build
+          ~/Library/Caches/go-build
+          ~\AppData\Local\go-build
+        key: ${{ runner.os }}-go-${{ matrix.go-version }}-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-${{ matrix.g
+      
