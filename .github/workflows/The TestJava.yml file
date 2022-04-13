@@ -1,0 +1,23 @@
+name: Tests
+on:   
+   push:
+    branches:  
+              -main
+jobs:
+
+  build
+    run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    -name: Checkout
+    uses:actions/checkout@v2
+    - name: AssignmentPart11.java run
+        run: AssignmentPart11.java-io/github-action@v2
+        #Install NPM dependencies, cache them correctly
+        # and run all AssignmentPart11.java tests
+        with:
+        build: npm run build
+        start: npm start
+          - name: assertEquals.java run
+        run: npm test
+
