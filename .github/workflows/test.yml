@@ -2,14 +2,10 @@ name: The TestJava.yml file
 on:
   pull_request:
     branches: [ main ]
+  
    jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      my-postgres-container:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
     steps:
       - name: Check out code
       - uses: actions/checkout@v2
@@ -19,6 +15,3 @@ on:
         run: npm install
       - name: Run tests 
         run: npm test
-        env:
-          POSTGRES_HOST: my-postgres-container
-          POSTGRES_PASSWORD: postgres
