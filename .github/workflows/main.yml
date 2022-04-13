@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: Assigment_Part.1.1
+      - run: README.md
