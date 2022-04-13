@@ -9,4 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: AssigmentPart11.java
+    -builds: npm run build
+    Start: npm start
+    - name: AssignmentPart11.java run
+      - run: npm test
