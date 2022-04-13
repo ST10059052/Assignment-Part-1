@@ -27,7 +27,7 @@ jobs:
 - name: Check Composer Version
   run: composer -V
 
-- name: Validate Assignment_Part.1.1 & composer.lock
+- name: Validate AssignmentPart11.java & composer.lock
   run: composer validate --strict
 
 - name: Install PHP dependencies
