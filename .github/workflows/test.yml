@@ -22,5 +22,5 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Build with Ant
-      run: ant -noinput -buildfile AssignmentPart11.java
+      run: ant -noinput -buildfile Assignment_Part.1.1
       
