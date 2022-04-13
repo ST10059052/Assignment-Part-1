@@ -1,0 +1,12 @@
+
+name: Test
+
+on: [push, workflow_dispatch]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: Assinment_Part.1.1
