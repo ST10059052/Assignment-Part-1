@@ -3,12 +3,12 @@ name: The TestJava.yml file
 
 on: [push, pull_request]
 
-jobs:
-  run:
-    runs-on: [ 'ubuntu-latest', 'windows-latest' ]
-    strategy:
-      matrix:
-        php-versions: ['7.3', '7.4', '8.0', '8.1']
-    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.os }}
+jobs:  
+  test:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Test
   
+    
  
