@@ -22,7 +22,7 @@ jobs:
 
       # Execute unit tests
       - name: Unit Test
-        run: ./Assignment_Part.1.1 testDebugUnitTest
+        run: ./Assignment_Part.1.11 of 1A testDebugUnitTest
 
-      - name: Assignment_Part.1.1  Test Report
-        uses: asadmansr/Assignment_Part.1.1-test-report-action@v1.2.0
+      - name: Assignment_Part.1.11 of 1A Test Report
+        uses: asadmansr/Assignment_Part.1.11 of 1A-test-report-action@v1.2.0
